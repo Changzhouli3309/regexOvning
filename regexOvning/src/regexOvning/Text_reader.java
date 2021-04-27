@@ -2,8 +2,6 @@ package regexOvning;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Text_reader {
@@ -13,18 +11,18 @@ public class Text_reader {
 	 * @param path
 	 * @return data
 	 */
-	public static List<String> getData(String path) {
+	public static String getData(String path) {
 
-		List<String> records = new ArrayList<>();
+		String record = "";
 		try (Scanner scanner = new Scanner(new File(path), "UTF-8");) {
 			while (scanner.hasNextLine()) {
-				records.add(scanner.nextLine());
+				record+=scanner.nextLine();
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			return null;
 		}
 
-		return records;
+		return record;
 	}
 }
